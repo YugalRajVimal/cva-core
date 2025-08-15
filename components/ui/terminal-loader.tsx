@@ -2,13 +2,15 @@ import React, { useEffect, useRef } from "react";
 import "./Preloader.css"; // Move the CSS there
 
 export default function TerminalPreloader() {
-  const screenRef = useRef(null);
-  const barRef = useRef(null);
-  const pctRef = useRef(null);
+  const screenRef = useRef<HTMLDivElement | null>(null);
+  const barRef = useRef<HTMLDivElement | null>(null);
+  const pctRef = useRef<HTMLDivElement | null>(null);
+
+
   const preloaderRef = useRef(null);
   const pageRef = useRef(null);
   const enterRef = useRef(null);
-  const matrixRef = useRef(null);
+  const matrixRef = useRef<HTMLCanvasElement | null>(null);
 
   useEffect(() => {
     const conf = {
@@ -35,14 +37,19 @@ export default function TerminalPreloader() {
 
     const scr = screenRef.current;
     const bar = barRef.current;
-    const pct = pctRef.current;
-    const preloader = preloaderRef.current;
-    const page = pageRef.current;
-    const enter = enterRef.current;
+    
+    const pct = pctRef?.current;
+    const enter = document.querySelector<HTMLElement>(".enter");
+    const preloader = document.querySelector<HTMLElement>(".preloader");
+    const page = document.querySelector<HTMLElement>(".page");
 
-    const rand = (a, b) => Math.random() * (b - a) + a;
-    const wait = (ms) => new Promise((r) => setTimeout(r, ms));
-    const el = (tag, cls) => {
+    // const rand = (a, b) => Math.random() * (b - a) + a;
+    const rand = (a: number, b: number): number => Math.random() * (b - a) + a;
+
+    const wait = (ms: number): Promise<void> =>
+      new Promise((r) => setTimeout(r, ms));
+
+    const el = (tag: string, cls?: string): HTMLElement => {
       const n = document.createElement(tag);
       if (cls) n.className = cls;
       return n;
@@ -65,11 +72,22 @@ export default function TerminalPreloader() {
       (Math.random() * 300 + Math.random() * 40).toFixed(1) + "ms";
     const timestamp = () => new Date().toLocaleString();
 
-    async function typeLine(content, cls = "", min = 6, max = 20) {
+    async function typeLine(
+      content: string | (() => string),
+      cls: string = "",
+      min: number = 6,
+      max: number = 20
+    ): Promise<void> {
+      const scr = screenRef.current;
+
+      if (!scr) return; // Prevents runtime crash if scr is null
       const line = el("div", `line ${cls}`.trim());
-      scr.appendChild(line);
+      // scr.appendChild(line);
+      scr.appendChild(line); // ✅ now scr is HTMLDivElement
+
       const text = typeof content === "function" ? content() : String(content);
       let i = 0;
+
       while (i < text.length) {
         const d = Math.floor(rand(min, max));
         i++;
@@ -77,27 +95,44 @@ export default function TerminalPreloader() {
         scr.scrollTop = scr.scrollHeight;
         await wait(d);
       }
+
       line.innerHTML = text;
       scr.scrollTop = scr.scrollHeight;
     }
 
-    function setProgress(p) {
+    function setProgress(p: number) {
       p = Math.max(0, Math.min(100, p));
-      bar.style.width = p + "%";
-      pct.textContent = Math.round(p) + "%";
+
+      if (barRef.current) {
+        barRef.current.style.width = p + "%";
+      }
+   
+      
+      if (pctRef.current) {
+        pctRef.current.textContent = Math.round(p) + "%";
+      }
     }
 
-    function realisticProgress(totalMs, onStep) {
+    function realisticProgress(
+      totalMs: number,
+      onStep: (progress: number) => void
+    ): Promise<void> {
       return new Promise((resolve) => {
         const start = performance.now();
+
         function step() {
           const t = performance.now() - start;
           const frac = Math.min(1, t / totalMs);
           const eased = Math.pow(frac, 0.6);
           onStep(eased * 100);
-          if (frac < 1) requestAnimationFrame(step);
-          else resolve();
+
+          if (frac < 1) {
+            requestAnimationFrame(step);
+          } else {
+            resolve();
+          }
         }
+
         step();
       });
     }
@@ -147,8 +182,11 @@ export default function TerminalPreloader() {
         const m = msgs[i];
         const line = el("div", "line muted");
         line.textContent = `> ${m} ${i === 0 ? "..." : " "}`;
-        scr.appendChild(line);
-        scr.scrollTop = scr.scrollHeight;
+        if (scr) {
+          scr.appendChild(line);
+          scr.scrollTop = scr.scrollHeight;
+        }
+
         if (i % 2 === 0) await wait(60 + Math.random() * 160);
       }
       await realisticProgress(900 + Math.random() * 800, (p) =>
@@ -174,17 +212,19 @@ export default function TerminalPreloader() {
     }
 
     function showEnter() {
-      enter.classList.add("show");
+      enter?.classList.add("show"); // Optional chaining = safe
     }
+
     function hidePreloader() {
-      preloader.classList.add("hide");
+      preloader?.classList.add("hide");
       setTimeout(() => {
         try {
-          preloader.remove();
+          preloader?.remove();
         } catch {}
-        page.classList.add("ready");
+        page?.classList.add("ready");
       }, 620);
     }
+
     function armEnter() {
       const handler = () => {
         hidePreloader();
@@ -217,33 +257,50 @@ export default function TerminalPreloader() {
     // Matrix rain
     (function matrix() {
       const canvas = matrixRef.current;
+      if (!canvas) return; // Exit if canvas not found
+
       const ctx = canvas.getContext("2d");
+      if (!ctx) return; // Exit if context couldn't be created
+
       const chars =
         "アカサタナハマヤラワガザダバパイキシチニヒミリヰギジヂビピウクスツヌフムユルグズヅブプエケセテネヘメレヱゲゼデベペオコソトノホモヨロヲゴゾドボポ" +
         "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
       const glyphs = chars.split("");
-      let W, H, cols, drops;
+      let W: number, H: number, cols: number, drops: number[];
+
       function resize() {
+        if (!canvas) return; // Re-check here
         W = canvas.width = window.innerWidth;
         H = canvas.height = window.innerHeight;
         cols = Math.floor(W / 14);
         drops = Array(cols).fill(1);
       }
+
       window.addEventListener("resize", resize);
       resize();
+
       ctx.font = '14px "Share Tech Mono"';
+
       function draw() {
+        if (!ctx) return; // ✅ Safeguard against null context
+
         ctx.fillStyle = "rgba(3,15,7,0.09)";
         ctx.fillRect(0, 0, W, H);
         ctx.fillStyle = "#1bff6f";
+
         for (let i = 0; i < drops.length; i++) {
           const ch = glyphs[Math.floor(Math.random() * glyphs.length)];
           ctx.fillText(ch, i * 14, drops[i] * 14);
-          if (drops[i] * 14 > H && Math.random() > 0.985) drops[i] = 0;
+
+          if (drops[i] * 14 > H && Math.random() > 0.985) {
+            drops[i] = 0;
+          }
           drops[i]++;
         }
+
         requestAnimationFrame(draw);
       }
+
       draw();
     })();
   }, []);
