@@ -14,6 +14,7 @@ import StatsSection from "@/components/stats-section";
 import LoadingScreen from "@/components/ui/loading-screen";
 import PlansSection from "@/components/tier-plans";
 import TerminalPreloader from "@/components/ui/terminal-loader";
+import Head from "next/head";
 
 export default function HomeClient() {
   const [loading, setLoading] = useState(true);
@@ -27,6 +28,10 @@ export default function HomeClient() {
 
   return (
     <>
+      <Head>
+        <title>Cvacore</title> {/* Browser tab text */}
+        <link rel="icon" href="/favicon.ico" /> {/* Favicon */}
+      </Head>
       <PageIllustration />
       <Hero />
       <Workflows />
