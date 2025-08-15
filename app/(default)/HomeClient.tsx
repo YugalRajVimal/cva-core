@@ -13,6 +13,7 @@ import BenefitsSection from "@/components/benefit-section";
 import StatsSection from "@/components/stats-section";
 import LoadingScreen from "@/components/ui/loading-screen";
 import PlansSection from "@/components/tier-plans";
+import TerminalPreloader from "@/components/ui/terminal-loader";
 
 export default function HomeClient() {
   const [loading, setLoading] = useState(true);
@@ -22,7 +23,7 @@ export default function HomeClient() {
     return () => clearTimeout(timer);
   }, []);
 
-  if (loading) return <LoadingScreen />;
+  if (loading) return <TerminalPreloader />;
 
   return (
     <>
