@@ -343,7 +343,7 @@ export default function TerminalPreloader() {
               0%
             </div>
           </div>
-          <div className="enter" ref={enterRef}>
+          <div className="enter hidden" ref={enterRef}>
             Press <span className="key">Any Key</span> to enter
           </div>
           <div className="badges">
