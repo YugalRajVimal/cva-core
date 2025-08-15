@@ -1,11 +1,36 @@
-import VideoThumb from "@/public/images/hero-image-01.jpg";
-import ModalVideo from "@/components/modal-video";
+"use client";
 
-import HighLogo from "./ui/high-logo";
+import { useRef } from "react";
+import { gsap } from "gsap";
+import { useGSAP } from "@gsap/react";
+
+gsap.registerPlugin(useGSAP);
 
 export default function HeroHome() {
+  const containerRef = useRef(null);
+
+  useGSAP(
+    () => {
+      gsap.from("#welcome-heading", {
+        y: 100,
+        opacity: 0,
+        ease: "power3.out",
+        stagger: 0.1,
+        duration: 5,
+      });
+      gsap.from("#welcome-heading .letter", {
+        y: 100,
+        opacity: 0,
+        ease: "power3.out",
+        stagger: 0.1,
+        // duration: 0.5,
+      });
+    },
+    { scope: containerRef }
+  );
+
   return (
-    <section>
+    <section ref={containerRef}>
       <div className="relative w-full h-[30vh]">
         <video
           autoPlay
@@ -15,9 +40,42 @@ export default function HeroHome() {
         >
           <source src="/vdo.mp4" type="video/mp4" />
         </video>
-        <div className="absolute h-full w-full bg-[#070c1c]/50 left-0 top-0 flex justify-center items-center">
-          <div className="scale-[5] image-rendering-pixelated">
-            <HighLogo />
+        <div className="absolute h-full text-center w-full bg-[#070c1c]/50 left-0 top-0 flex justify-center items-center">
+          <div
+            id="welcome-heading"
+            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl animate-[gradient_6s_linear_infinite] bg-[linear-gradient(to_right,var(--color-gray-200),var(--color-indigo-200),var(--color-gray-50),var(--color-indigo-300),var(--color-gray-200))] bg-[length:200%_auto] bg-clip-text font-serif font-semibold text-transparent py-4"
+          >
+            <span className="letter">W</span>
+            <span className="letter">e</span>
+            <span className="letter">l</span>
+            <span className="letter">c</span>
+            <span className="letter">o</span>
+            <span className="letter">m</span>
+            <span className="letter">e</span>
+            <span className="letter"> </span>
+            <span className="letter">t</span>
+            <span className="letter">o</span>
+            <span className="letter"> </span>
+            <span className="letter">C</span>
+            <span className="letter">v</span>
+            <span className="letter">a</span>
+            <span className="letter">c</span>
+            <span className="letter">o</span>
+            <span className="letter">r</span>
+            <span className="letter">e</span>
+            <span className="letter"> </span>
+            <span className="letter">T</span>
+            <span className="letter">e</span>
+            <span className="letter">c</span>
+            <span className="letter">h</span>
+            <span className="letter">n</span>
+            <span className="letter">o</span>
+            <span className="letter">l</span>
+            <span className="letter">o</span>
+            <span className="letter">g</span>
+            <span className="letter">i</span>
+            <span className="letter">e</span>
+            <span className="letter">s</span>
           </div>
         </div>
       </div>

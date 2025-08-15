@@ -29,7 +29,7 @@ const testimonials = [
     name: "Rajesh K.",
     company: "Tata Consultancy Services",
     content:
-      "CVA Core Technologies transformed the way our teams collaborate across multiple geographies. Their cloud integration solutions have made our systems faster, more secure, and highly scalable.",
+      "Cvacore Technologies transformed the way our teams collaborate across multiple geographies. Their cloud integration solutions have made our systems faster, more secure, and highly scalable.",
     categories: [1, 3, 5],
   },
   {
@@ -38,7 +38,7 @@ const testimonials = [
     name: "Aisha M.",
     company: "Siemens",
     content:
-      "The AI-driven automation solutions from CVA Core Technologies have helped us reduce operational costs by 40%. Their deep understanding of enterprise requirements is unmatched.",
+      "The AI-driven automation solutions from Cvacore Technologies have helped us reduce operational costs by 40%. Their deep understanding of enterprise requirements is unmatched.",
     categories: [1, 2, 4],
   },
   {
@@ -56,7 +56,7 @@ const testimonials = [
     name: "Priya S.",
     company: "Canon India",
     content:
-      "From advanced analytics to seamless ERP integration, CVA Core Technologies delivered beyond expectations. Their team truly understands enterprise-grade software development.",
+      "From advanced analytics to seamless ERP integration, core Technologies delivered beyond expectations. Their team truly understands enterprise-grade software development.",
     categories: [1, 4],
   },
   {
@@ -65,7 +65,7 @@ const testimonials = [
     name: "Ethan W.",
     company: "Cadbury International",
     content:
-      "CVA Core Technologies’ IoT and AI solutions have allowed us to optimize our supply chain in real time. It’s like having a control center that predicts and resolves issues instantly.",
+      "Cvacore Technologies’ IoT and AI solutions have allowed us to optimize our supply chain in real time. It’s like having a control center that predicts and resolves issues instantly.",
     categories: [1, 3, 5],
   },
   {
@@ -74,7 +74,7 @@ const testimonials = [
     name: "Laura P.",
     company: "Maffell",
     content:
-      "What impressed us most about CVA Core Technologies was their ability to integrate complex AI models into our existing systems without disrupting ongoing operations.",
+      "What impressed us most about Cvacore Technologies was their ability to integrate complex AI models into our existing systems without disrupting ongoing operations.",
     categories: [1, 3],
   },
   {
@@ -83,7 +83,7 @@ const testimonials = [
     name: "Sandeep V.",
     company: "Binance",
     content:
-      "CVA Core Technologies built our secure blockchain integration platform in record time. The performance and reliability have exceeded our highest expectations.",
+      "Cvacore Technologies built our secure blockchain integration platform in record time. The performance and reliability have exceeded our highest expectations.",
     categories: [1, 2, 5],
   },
   {
@@ -92,7 +92,7 @@ const testimonials = [
     name: "Jessica F.",
     company: "Forbes Media",
     content:
-      "Their data analytics dashboard is sleek, intuitive, and lightning-fast. CVA Core Technologies has made enterprise data insights accessible and actionable for our teams.",
+      "Their data analytics dashboard is sleek, intuitive, and lightning-fast. Cvacore Technologies has made enterprise data insights accessible and actionable for our teams.",
     categories: [1, 4],
   },
   {
@@ -101,7 +101,7 @@ const testimonials = [
     name: "Mark D.",
     company: "Ray-Ban",
     content:
-      "We were looking for a partner who could handle AI, cloud, and cybersecurity together — CVA Core Technologies delivered all of that in one unified solution.",
+      "We were looking for a partner who could handle AI, cloud, and cybersecurity together — Cvacore Technologies delivered all of that in one unified solution.",
     categories: [1, 2],
   },
 ];
