@@ -1,5 +1,4 @@
 import Image from "next/image";
-import BlurredShape from "@/public/images/blurred-shape.svg";
 
 export default function Cta() {
   return (
@@ -9,9 +8,9 @@ export default function Cta() {
         className="pointer-events-none absolute bottom-0 left-1/2 -z-10 -mb-24 ml-20 -translate-x-1/2"
         aria-hidden="true"
       >
-        <Image
+        <img
           className="max-w-none"
-          src={BlurredShape}
+          src="/images/blurred-shape.svg"
           width={760}
           height={668}
           alt="Blurred shape "
@@ -35,7 +34,9 @@ export default function Cta() {
               data-aos="fade-up"
               data-aos-delay={200}
             >
-              From custom web platforms to enterprise-grade applications, CVA Core Technologies delivers solutions that drive growth, scalability, and innovation.
+              From custom web platforms to enterprise-grade applications, CVA
+              Core Technologies delivers solutions that drive growth,
+              scalability, and innovation.
             </p>
 
             {/* Buttons */}

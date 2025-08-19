@@ -16,15 +16,19 @@ import PlansSection from "@/components/tier-plans";
 import TerminalPreloader from "@/components/ui/terminal-loader";
 import Head from "next/head";
 
+import { useCustomerAuth } from "@/context/CustomerAuthContext";
+
 export default function HomeClient() {
   const [loading, setLoading] = useState(true);
+  const { isCustomerAuthenticated } = useCustomerAuth();
+
 
   useEffect(() => {
     const timer = setTimeout(() => setLoading(false), 10000);
     return () => clearTimeout(timer);
   }, []);
 
-  if (loading) return <TerminalPreloader />;
+  if (loading && !isCustomerAuthenticated) return <TerminalPreloader />;
 
   return (
     <>
@@ -36,12 +40,13 @@ export default function HomeClient() {
       <Hero />
       <Workflows />
       <Services />
-      <PlansSection />
+      {/* <PlansSection /> */}
       <BenefitsSection />
       <StatsSection />
       <Features />
       <Testimonials />
       <Cta />
+      
     </>
   );
 }

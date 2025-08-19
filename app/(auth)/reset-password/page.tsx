@@ -1,11 +1,43 @@
-export const metadata = {
-  title: "Reset Password - Open PRO",
-  description: "Page description",
-};
+"use client";
 
 import Link from "next/link";
+import { useCustomerAuth } from "../../../context/CustomerAuthContext";
+import { toast } from "react-toastify";
+import { useRouter } from "next/navigation";
 
 export default function ResetPassword() {
+  const router = useRouter();
+  const { forgetPassword } = useCustomerAuth();
+
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    const form = event.currentTarget;
+    const formData = new FormData(form);
+
+    const email = formData.get("email") as string;
+    const password = formData.get("password") as string;
+
+    if (!email || !password) {
+      toast.error("Please enter your email and password.");
+      return;
+    }
+
+    try {
+      const response = await forgetPassword({ email, password });
+      if (response) {
+        // toast.success("OTP sent to your email");
+        // ✅ Next.js router replace
+        router.push(`/verify-otp?email=${email}`);
+      } else {
+        console.error("Failed to send password reset link.");
+        toast.error("Failed to send password reset link.");
+      }
+    } catch (error) {
+      console.error("Error sending password reset link", error);
+      toast.error("Something went wrong. Try again.");
+    }
+  };
+
   return (
     <section>
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
@@ -17,7 +49,7 @@ export default function ResetPassword() {
             </h1>
           </div>
           {/* Contact form */}
-          <form className="mx-auto max-w-[400px]">
+          <form onSubmit={handleSubmit} className="mx-auto max-w-[400px]">
             <div>
               <label
                 className="mb-1 block text-sm font-medium text-indigo-200/65"
@@ -27,13 +59,34 @@ export default function ResetPassword() {
               </label>
               <input
                 id="email"
+                name="email"
                 type="email"
                 className="form-input w-full"
                 placeholder="Your email"
+                required
+              />
+            </div>
+            <div>
+              <label
+                className="mb-1 block text-sm font-medium text-indigo-200/65"
+                htmlFor="password"
+              >
+                New Password
+              </label>
+              <input
+                id="password"
+                name="password"
+                type="password"
+                className="form-input w-full"
+                placeholder="Enter new password"
+                required
               />
             </div>
             <div className="mt-6">
-              <button className="btn w-full bg-linear-to-t from-indigo-600 to-indigo-500 bg-[length:100%_100%] bg-[bottom] text-white shadow-[inset_0px_1px_0px_0px_--theme(--color-white/.16)] hover:bg-[length:100%_150%]">
+              <button
+                type="submit"
+                className="btn w-full bg-linear-to-t from-indigo-600 to-indigo-500 bg-[length:100%_100%] bg-[bottom] text-white shadow-[inset_0px_1px_0px_0px_--theme(--color-white/.16)] hover:bg-[length:100%_150%]"
+              >
                 Reset Password
               </button>
             </div>

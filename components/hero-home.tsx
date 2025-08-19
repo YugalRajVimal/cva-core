@@ -92,7 +92,7 @@ export default function HeroHome() {
         /> */}
 
         {/* Hero content */}
-        <div className="py-12 md:py-20">
+        <div id="about" className="py-12 md:py-20">
           {/* Section header */}
           <div className=" text-center ">
             <h1

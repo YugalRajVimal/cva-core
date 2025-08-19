@@ -1,10 +1,12 @@
 import Image from "next/image";
-import WorflowImg01 from "@/public/images/workflow-01.png";
-import WorflowImg02 from "@/public/images/workflow-02.png";
-import WorflowImg03 from "@/public/images/workflow-03.png";
+
 import Spotlight from "@/components/spotlight";
 
 export default function Workflows() {
+  const WorflowImg01 = "/images/workflow-01.png";
+  const WorflowImg02 = "/images/workflow-02.png";
+  const WorflowImg03 = "/images/workflow-03.png";
+
   return (
     <section>
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
@@ -28,12 +30,19 @@ export default function Workflows() {
 
           {/* Spotlight items */}
           <Spotlight className="group mx-auto grid max-w-sm items-start gap-6 lg:max-w-none lg:grid-cols-3">
-
             {/* Card 1 */}
-            <a className="group/card relative h-full overflow-hidden rounded-2xl bg-gray-800 p-px ..." href="#0">
+            <a
+              className="group/card relative h-full overflow-hidden rounded-2xl bg-gray-800 p-px ..."
+              href="#0"
+            >
               <div className="relative z-20 h-full overflow-hidden rounded-[inherit] bg-gray-950 ...">
                 {/* Image */}
-                <Image src={WorflowImg01} width={350} height={288} alt="Hosting & Cloud Services" />
+                <img
+                  src={WorflowImg01}
+                  width={350}
+                  height={288}
+                  alt="Hosting & Cloud Services"
+                />
                 {/* Content */}
                 <div className="p-6">
                   <div className="mb-3">
@@ -53,10 +62,18 @@ export default function Workflows() {
             </a>
 
             {/* Card 2 */}
-            <a className="group/card relative h-full overflow-hidden rounded-2xl bg-gray-800 p-px ..." href="#0">
+            <a
+              className="group/card relative h-full overflow-hidden rounded-2xl bg-gray-800 p-px ..."
+              href="#0"
+            >
               <div className="relative z-20 h-full overflow-hidden rounded-[inherit] bg-gray-950 ...">
                 {/* Image */}
-                <Image src={WorflowImg02} width={350} height={288} alt="Development Solutions" />
+                <img
+                  src={WorflowImg02}
+                  width={350}
+                  height={288}
+                  alt="Development Solutions"
+                />
                 {/* Content */}
                 <div className="p-6">
                   <div className="mb-3">
@@ -76,10 +93,18 @@ export default function Workflows() {
             </a>
 
             {/* Card 3 */}
-            <a className="group/card relative h-full overflow-hidden rounded-2xl bg-gray-800 p-px ..." href="#0">
+            <a
+              className="group/card relative h-full overflow-hidden rounded-2xl bg-gray-800 p-px ..."
+              href="#0"
+            >
               <div className="relative z-20 h-full overflow-hidden rounded-[inherit] bg-gray-950 ...">
                 {/* Image */}
-                <Image src={WorflowImg03} width={350} height={288} alt="Marketing & Branding" />
+                <img
+                  src={WorflowImg03}
+                  width={350}
+                  height={288}
+                  alt="Marketing & Branding"
+                />
                 {/* Content */}
                 <div className="p-6">
                   <div className="mb-3">
@@ -90,13 +115,12 @@ export default function Workflows() {
                     </span>
                   </div>
                   <p className="text-indigo-200/65">
-                    SEO, social media, ads, branding, video production, and UI/UX
-                    design to captivate your audience and grow your brand.
+                    SEO, social media, ads, branding, video production, and
+                    UI/UX design to captivate your audience and grow your brand.
                   </p>
                 </div>
               </div>
             </a>
-
           </Spotlight>
         </div>
       </div>

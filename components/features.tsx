@@ -1,8 +1,15 @@
 import Image from "next/image";
-import BlurredShapeGray from "@/public/images/blurred-shape-gray.svg";
-import BlurredShape from "@/public/images/blurred-shape.svg";
-import FeaturesImage from "@/public/images/features.png";
-import { BrushIcon, CodeIcon, Facebook, FacebookIcon, FileTextIcon, SearchIcon, ServerIcon, ShieldIcon } from "lucide-react";
+
+import {
+  BrushIcon,
+  CodeIcon,
+  Facebook,
+  FacebookIcon,
+  FileTextIcon,
+  SearchIcon,
+  ServerIcon,
+  ShieldIcon,
+} from "lucide-react";
 
 export default function Features() {
   return (
@@ -11,9 +18,9 @@ export default function Features() {
         className="pointer-events-none absolute left-1/2 top-0 -z-10 -mt-20 -translate-x-1/2"
         aria-hidden="true"
       >
-        <Image
+        <img
           className="max-w-none"
-          src={BlurredShapeGray}
+          src="/images/blurred-shape-gray.svg"
           width={760}
           height={668}
           alt="Blurred shape"
@@ -23,9 +30,9 @@ export default function Features() {
         className="pointer-events-none absolute bottom-0 left-1/2 -z-10 -mb-80 -translate-x-[120%] opacity-50"
         aria-hidden="true"
       >
-        <Image
+        <img
           className="max-w-none"
-          src={BlurredShape}
+          src="/images/blurred-shape.svg"
           width={760}
           height={668}
           alt="Blurred shape"
@@ -51,9 +58,9 @@ export default function Features() {
             </p>
           </div>
           <div className="flex justify-center pb-4 md:pb-12" data-aos="fade-up">
-            <Image
+            <img
               className="max-w-none"
-              src={FeaturesImage}
+              src="/images/features.png"
               width={1104}
               height={384}
               alt="Cvacore Services"

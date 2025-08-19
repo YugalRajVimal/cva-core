@@ -1,6 +1,5 @@
 import Logo from "./logo";
 import Image from "next/image";
-import FooterIllustration from "@/public/images/footer-illustration.svg";
 
 export default function Footer() {
   return (
@@ -11,9 +10,9 @@ export default function Footer() {
           className="pointer-events-none absolute bottom-0 left-1/2 -z-10 -translate-x-1/2"
           aria-hidden="true"
         >
-          <Image
+          <img
             className="max-w-none"
-            src={FooterIllustration}
+            src="/images/footer-illustration.svg"
             width={1076}
             height={378}
             alt="Footer illustration"
@@ -36,43 +35,64 @@ export default function Footer() {
             </p>
           </div>
 
-          {/* Hosting & Cloud */}
-          <div className="space-y-2 flex-1">
-            <h3 className="text-sm font-medium text-gray-200">
-              Hosting & Cloud
-            </h3>
-            <ul className="space-y-2 text-sm text-indigo-200/65">
-              <li>Shared & Reseller Hosting</li>
-              <li>WordPress Hosting</li>
-              <li>VPS & Dedicated Servers</li>
-              <li>Cloud Storage Solutions</li>
-              <li>Domain & SSL Services</li>
-            </ul>
-          </div>
-
           {/* Development */}
           <div className="space-y-2 flex-1">
-            <h3 className="text-sm font-medium text-gray-200">Development</h3>
+            <h3 className="text-sm font-medium text-gray-200">Services</h3>
             <ul className="space-y-2 text-sm text-indigo-200/65">
-              <li>Website & App Development</li>
-              <li>Custom Software, ERP & CRM</li>
-              <li>Telegram & WhatsApp Automation</li>
-              <li>Payment Gateway Integration</li>
-              <li>LMS Setup</li>
+              <li>Hosting & Cloud Services</li>
+              <li>Development Services</li>
+              <li>Marketing & SEO</li>
+              <li>Meta Ecosystem</li>
+              <li>Creative & Branding</li>
+              <li>Cyber & Business Support</li>
+              <li>Legal & Business Services</li>
             </ul>
           </div>
 
-          {/* Marketing & Branding */}
+          {/* Hosting & Cloud */}
           <div className="space-y-2 flex-1">
-            <h3 className="text-sm font-medium text-gray-200">
-              Marketing & Branding
-            </h3>
+            <h3 className="text-sm font-medium text-gray-200">Quick Links</h3>
             <ul className="space-y-2 text-sm text-indigo-200/65">
-              <li>SEO & Google Ads</li>
-              <li>Meta Ads & SMM</li>
-              <li>Email/SMS Marketing</li>
-              <li>Logo & UI/UX Design</li>
-              <li>Video Editing & Branding Kits</li>
+              <li>
+                <a
+                  href="/"
+                  className="text-indigo-200/65 transition hover:text-indigo-500"
+                >
+                  Home
+                </a>
+              </li>
+              <li>
+                <a
+                  href="#about"
+                  className="text-indigo-200/65 transition hover:text-indigo-500"
+                >
+                  About Us
+                </a>
+              </li>
+              <li>
+                <a
+                  href="/services"
+                  className="text-indigo-200/65 transition hover:text-indigo-500"
+                >
+                  Services
+                </a>
+              </li>
+              <li>
+                <a
+                  href="/portfolio"
+                  className="text-indigo-200/65 transition hover:text-indigo-500"
+                >
+                  Portfolio
+                </a>
+              </li>
+              <li>
+                <a
+                  href="#testimonials"
+                  className="text-indigo-200/65 transition hover:text-indigo-500"
+                >
+                  Testimonials
+                </a>
+              </li>
             </ul>
           </div>
         </div>

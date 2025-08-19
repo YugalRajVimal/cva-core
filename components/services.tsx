@@ -10,13 +10,6 @@ import {
   Shield,
   Briefcase,
 } from "lucide-react"; // Lucide Icons
-// import HostingIllustration from "@/public/images/hosting-illus.png"; // Replace with real illustrations
-// import DevIllustration from "@/public/images/dev-illus.png";
-// import MarketingIllustration from "@/public/images/marketing-illus.png";
-// import MetaIllustration from "@/public/images/meta-illus.png";
-// import BrandingIllustration from "@/public/images/branding-illus.png";
-// import CyberIllustration from "@/public/images/cyber-illus.png";
-// import LegalIllustration from "@/public/images/legal-illus.png";
 
 export default function ServicesCvacore() {
   const services = [
@@ -137,7 +130,7 @@ export default function ServicesCvacore() {
                 </h3>
               </div>
               {/* <div className="mb-4">
-                <Image
+                <img
                   src={service.illustration}
                   alt={service.title}
                   className="rounded-lg"

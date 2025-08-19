@@ -3,24 +3,25 @@
 import { useState } from "react";
 import useMasonry from "@/utils/useMasonry";
 import Image, { StaticImageData } from "next/image";
-import TestimonialImg01 from "@/public/images/testimonial-01.jpg";
-import TestimonialImg02 from "@/public/images/testimonial-02.jpg";
-import TestimonialImg03 from "@/public/images/testimonial-03.jpg";
-import TestimonialImg04 from "@/public/images/testimonial-04.jpg";
-import TestimonialImg05 from "@/public/images/testimonial-05.jpg";
-import TestimonialImg06 from "@/public/images/testimonial-06.jpg";
-import TestimonialImg07 from "@/public/images/testimonial-07.jpg";
-import TestimonialImg08 from "@/public/images/testimonial-08.jpg";
-import TestimonialImg09 from "@/public/images/testimonial-09.jpg";
-import ClientImg01 from "@/public/images/client-logo-01.svg";
-import ClientImg02 from "@/public/images/client-logo-02.svg";
-import ClientImg03 from "@/public/images/client-logo-03.svg";
-import ClientImg04 from "@/public/images/client-logo-04.svg";
-import ClientImg05 from "@/public/images/client-logo-05.svg";
-import ClientImg06 from "@/public/images/client-logo-06.svg";
-import ClientImg07 from "@/public/images/client-logo-07.svg";
-import ClientImg08 from "@/public/images/client-logo-08.svg";
-import ClientImg09 from "@/public/images/client-logo-09.svg";
+
+const TestimonialImg01 = "/images/testimonial-01.jpg";
+const TestimonialImg02 = "/images/testimonial-02.jpg";
+const TestimonialImg03 = "/images/testimonial-03.jpg";
+const TestimonialImg04 = "/images/testimonial-04.jpg";
+const TestimonialImg05 = "/images/testimonial-05.jpg";
+const TestimonialImg06 = "/images/testimonial-06.jpg";
+const TestimonialImg07 = "/images/testimonial-07.jpg";
+const TestimonialImg08 = "/images/testimonial-08.jpg";
+const TestimonialImg09 = "/images/testimonial-09.jpg";
+const ClientImg01 = "/images/client-logo-01.svg";
+const ClientImg02 = "/images/client-logo-02.svg";
+const ClientImg03 = "/images/client-logo-03.svg";
+const ClientImg04 = "/images/client-logo-04.svg";
+const ClientImg05 = "/images/client-logo-05.svg";
+const ClientImg06 = "/images/client-logo-06.svg";
+const ClientImg07 = "/images/client-logo-07.svg";
+const ClientImg08 = "/images/client-logo-08.svg";
+const ClientImg09 = "/images/client-logo-09.svg";
 
 const testimonials = [
   {
@@ -111,7 +112,7 @@ export default function Testimonials() {
   const [category, setCategory] = useState<number>(1);
 
   return (
-    <div className="mx-auto max-w-6xl px-4 sm:px-6">
+    <div id="testimonials" className="mx-auto max-w-6xl px-4 sm:px-6">
       <div className="border-t py-12 [border-image:linear-gradient(to_right,transparent,--theme(--color-slate-400/.25),transparent)1] md:py-20">
         {/* Section header */}
         <div className="mx-auto max-w-3xl pb-12 text-center">
@@ -266,8 +267,8 @@ export function Testimonial({
   children,
 }: {
   testimonial: {
-    img: StaticImageData;
-    clientImg: StaticImageData;
+    img: string;
+    clientImg: string;
     name: string;
     company: string;
     content: string;
@@ -284,13 +285,13 @@ export function Testimonial({
     >
       <div className="flex flex-col gap-4">
         <div>
-          <Image src={testimonial.clientImg} height={36} alt="Client logo" />
+          <img src={testimonial.clientImg} height={36} alt="Client logo" />
         </div>
         <p className="text-indigo-200/65 before:content-['“'] after:content-['”']">
           {children}
         </p>
         <div className="flex items-center gap-3">
-          <Image
+          <img
             className="inline-flex shrink-0 rounded-full"
             src={testimonial.img}
             width={36}
